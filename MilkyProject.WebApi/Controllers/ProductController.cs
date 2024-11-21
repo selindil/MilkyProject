@@ -31,9 +31,26 @@ namespace MilkyProject.WebApi.Controllers
         }
 
         [HttpDelete]
-        public IActionResult DeleteProduct(int id) 
+        public IActionResult DeleteProduct(int id)
         {
             _productService.TDelete(id);
             return Ok("Ürün başarıyla silindi");
+        }
+
+        [HttpGet("GetProduct")]
+        public IActionResult GetProduct(int id)
+        {
+         var value = _productService.TGetById(id);
+          return Ok(value);
+        }
+
+        [HttpPut]
+        public IActionResult UpdateProduct(Product product)
+        {
+            _productService.TUpdate(product);
+            return Ok("Ürün başarıyla güncellendi");
+
+        }
+
     }
 }
